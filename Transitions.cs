@@ -1,32 +1,31 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace KledDev.Transitions
+namespace Common.Transitions
 {
-    public class KledDevTransitions : MonoBehaviour
+    public class Transitions : MonoBehaviour
     {
         /// <summary>
-            /// Instância única da classe KledDevTransitions.
+            /// Instância única da classe Transitions.
             /// </summary>
-        static KledDevTransitions instance;
+        static Transitions instance;
 
         /// <summary>
-            /// Cria uma instância da classe KledDevTransitions se nenhuma existir.
+            /// Cria uma instância da classe Transitions se nenhuma existir.
             /// </summary>
         static void CreateInstance()
         {
-            GameObject @object = new("KledDevTransitions"); // Cria um GameObject chamado "KledDevTransitions".
-            @object.AddComponent<KledDevTransitions>(); // Adiciona o componente KledDevTransitions ao GameObject.
-            instance = @object.GetComponent<KledDevTransitions>(); // Obtém a referência ao componente KledDevTransitions.
+            GameObject @object = new("Transitions"); // Cria um GameObject chamado "Transitions".
+            @object.AddComponent<Transitions>(); // Adiciona o componente Transitions ao GameObject.
+            instance = @object.GetComponent<Transitions>(); // Obtém a referência ao componente Transitions.
         }
 
         /// <summary>
-            /// Obtém a instância da classe KledDevTransitions.
+            /// Obtém a instância da classe Transitions.
             /// </summary>
-            /// <returns>A instância da classe KledDevTransitions.</returns>
-        static KledDevTransitions GetInstance()
+            /// <returns>A instância da classe Transitions.</returns>
+        static Transitions GetInstance()
         {
             if (instance == null)
             {

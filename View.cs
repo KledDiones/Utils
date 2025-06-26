@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace KledDev
+namespace Common
 {
     public class View : MonoBehaviour
     {

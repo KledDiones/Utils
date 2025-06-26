@@ -5,30 +5,30 @@ using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
-namespace KledDev.Utils
+namespace Common.Utils
 {
-    public class KledDevUtils : MonoBehaviour
+    public class Utils : MonoBehaviour
     {
         /// <summary>
-            /// Instância única da classe KledDevUtils.
-            /// </summary>
-        static KledDevUtils instance;
+        /// Instância única da classe Utils.
+        /// </summary>
+        static Utils instance;
 
         /// <summary>
-            /// Cria uma instância da classe KledDevUtils se nenhuma existir.
-            /// </summary>
+        /// Cria uma instância da classe Utils se nenhuma existir.
+        /// </summary>
         static void CreateInstance()
         {
-            GameObject @object = new("KledDevUtils"); // Cria um GameObject chamado "KledDevUtils".
-            @object.AddComponent<KledDevUtils>(); // Adiciona o componente KledDevUtils ao GameObject.
-            instance = @object.GetComponent<KledDevUtils>(); // Obtém a referência ao componente KledDevUtils.
+            GameObject @object = new("Utils"); // Cria um GameObject chamado "Utils".
+            @object.AddComponent<Utils>(); // Adiciona o componente Utils ao GameObject.
+            instance = @object.GetComponent<Utils>(); // Obtém a referência ao componente Utils.
         }
 
         /// <summary>
-            /// Obtém a instância da classe KledDevUtils.
-            /// </summary>
-            /// <returns>A instância da classe KledDevUtils.</returns>
-        static KledDevUtils GetInstance()
+        /// Obtém a instância da classe Utils.
+        /// </summary>
+        /// <returns>A instância da classe Utils.</returns>
+        static Utils GetInstance()
         {
             if (instance == null)
             {
@@ -38,10 +38,10 @@ namespace KledDev.Utils
         }
 
         /// <summary>
-            /// Faz uma pausa de x segundos e depois executa a ação playAction.
-            /// </summary>
-            /// <param name="xSeconds">O número de segundos para esperar.</param>
-            /// <param name="playAction">A ação a ser executada após a espera.</param>
+        /// Faz uma pausa de x segundos e depois executa a ação playAction.
+        /// </summary>
+        /// <param name="xSeconds">O número de segundos para esperar.</param>
+        /// <param name="playAction">A ação a ser executada após a espera.</param>
         public static void WaitXSecondsForPlayAction(float xSeconds, Action playAction)
         {
             if (xSeconds == 0) return;
@@ -49,10 +49,10 @@ namespace KledDev.Utils
         }
 
         /// <summary>
-            /// Remove acentos de uma string.
-            /// </summary>
-            /// <param name="text">A string com acentos.</param>
-            /// <returns>A string sem acentos.</returns>
+        /// Remove acentos de uma string.
+        /// </summary>
+        /// <param name="text">A string com acentos.</param>
+        /// <returns>A string sem acentos.</returns>
         public static string RemoveAccents(string text)
         {
             string decomposed = text.Normalize(NormalizationForm.FormD); // Normaliza a string para remover acentos.
@@ -62,9 +62,9 @@ namespace KledDev.Utils
         }
 
         /// <summary>
-            /// Destroi todos os filhos de um Transform.
-            /// </summary>
-            /// <param name="content">O Transform que contém os filhos a serem destruídos.</param>
+        /// Destroi todos os filhos de um Transform.
+        /// </summary>
+        /// <param name="content">O Transform que contém os filhos a serem destruídos.</param>
         public static void ClearChilds(Transform content)
         {
             for (int i = 0; i < content.childCount; i++)
@@ -74,11 +74,11 @@ namespace KledDev.Utils
         }
 
         /// <summary>
-            /// Preenche um Transform com GameObjects instanciados a partir de um prefab.
-            /// </summary>
-            /// <param name="objIDList">Uma lista de IDs de objetos.</param>
-            /// <param name="content">O Transform que receberá os GameObjects instanciados.</param>
-            /// <param name="viewObject">O prefab a ser usado para instanciar os GameObjects.</param>
+        /// Preenche um Transform com GameObjects instanciados a partir de um prefab.
+        /// </summary>
+        /// <param name="objIDList">Uma lista de IDs de objetos.</param>
+        /// <param name="content">O Transform que receberá os GameObjects instanciados.</param>
+        /// <param name="viewObject">O prefab a ser usado para instanciar os GameObjects.</param>
         public static void FillContent(List<int> objIDList, Transform content, GameObject viewObject)
         {
 
