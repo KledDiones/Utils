@@ -45,7 +45,7 @@ namespace Common.Utils
         public static void WaitXSecondsForPlayAction(float xSeconds, Action playAction)
         {
             if (xSeconds == 0) return;
-            GetInstance().StartCoroutine(WaitXSecondsForPLayActionCoroutine(xSeconds, playAction)); // Inicia a coroutine que espera e executa a ação.
+            GetInstance().StartCoroutine(WaitXSecondsForPlayActionCoroutine(xSeconds, playAction)); // Inicia a coroutine que espera e executa a ação.
         }
 
         /// <summary>
@@ -79,17 +79,24 @@ namespace Common.Utils
         /// <param name="objIDList">Uma lista de IDs de objetos.</param>
         /// <param name="content">O Transform que receberá os GameObjects instanciados.</param>
         /// <param name="viewObject">O prefab a ser usado para instanciar os GameObjects.</param>
-        public static void FillContent(List<int> objIDList, Transform content, GameObject viewObject)
+        public static List<View> FillContent(List<string> objIDList, Transform content, GameObject viewObject, bool clearContent = true)
         {
+            List<View> views = new List<View>();
+
+            if (clearContent)
+                ClearChilds(content); // Limpa o conteúdo do Transform.
 
             for (int i = 0; i < objIDList.Count; i++)
             {
                 GameObject view = Instantiate(viewObject, content); // Instancia o prefab no Transform.
-                view.GetComponent<View>().ID = objIDList[i]; // Define a propriedade ID do componente View com o ID da lista.
+                view.GetComponent<View>().Initialize(objIDList[i]); // Define a propriedade ID do componente View com o ID da lista.
+                views.Add(view.GetComponent<View>()); // Adiciona o componente View à lista de views.
             }
+
+            return views; // Retorna a lista de views.
         }
 
-        static IEnumerator WaitXSecondsForPLayActionCoroutine(float xSeconds, Action playAction)
+        static IEnumerator WaitXSecondsForPlayActionCoroutine(float xSeconds, Action playAction)
         {
             yield return new WaitForSeconds(xSeconds); // Aguarda o número de segundos especificado.
             playAction.Invoke(); // Executa a ação playAction.

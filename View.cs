@@ -7,8 +7,8 @@ namespace Common
 {
     public class View : MonoBehaviour
     {
-        private int _ID;
-        public int ID
+        private string _ID;
+        protected string ID
         {
             get { return _ID; }
             set { _ID = value;
@@ -16,10 +16,12 @@ namespace Common
             }
         }
 
-        protected virtual void UpdateView()
+        public virtual void Initialize(string id)
         {
-
+            ID = id;
         }
+
+        protected virtual void UpdateView() { }
     }
 
 }
