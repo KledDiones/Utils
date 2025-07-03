@@ -1,3 +1,5 @@
+//Essa interface exige NewtonSoft:
+//com.unity.nuget.newtonsoft-json
 using System;
 using System.Collections.Generic;
 using System.IO;
