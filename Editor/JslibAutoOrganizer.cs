@@ -7,8 +7,6 @@ public class JslibAutoOrganizer : AssetPostprocessor
     static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets,
                                        string[] movedAssets, string[] movedFromAssetPaths)
     {
-        Debug.Log("Rodando post");
-
         string sourceFolder = "Assets/Scripts/Utils/Plugins/WebGL";
         string pluginsFolder = "Assets/Plugins/KledUtils/WebGL";
 
