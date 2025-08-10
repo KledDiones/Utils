@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 
+namespace Common.Editor {
 public class JslibAutoOrganizer : AssetPostprocessor
 {
     static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets,
@@ -45,4 +46,5 @@ public class JslibAutoOrganizer : AssetPostprocessor
         if (changed)
             AssetDatabase.Refresh();
     }
+}
 }

@@ -10,7 +10,7 @@ namespace Common.Transitions
             /// Instância única da classe Transitions.
             /// </summary>
         static Transitions instance;
-
+        
         /// <summary>
             /// Cria uma instância da classe Transitions se nenhuma existir.
             /// </summary>
