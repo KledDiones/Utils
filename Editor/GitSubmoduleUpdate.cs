@@ -7,21 +7,23 @@ using System.IO;
 [InitializeOnLoad]
 public class GitSubmoduleUpdater
 {
+    const string EditorPrefKey = "GitSubmoduleUpdaterHasRun";
+
     static GitSubmoduleUpdater()
     {
-        EditorApplication.update += UpdateSubmoduleOnce;
+        if (!EditorPrefs.GetBool(EditorPrefKey, false))
+        {
+            EditorApplication.update += UpdateSubmoduleOnce;
+        }
     }
-
-    private static bool hasRun = false;
 
     private static void UpdateSubmoduleOnce()
     {
-        if (hasRun) return;
-
-        hasRun = true;
         EditorApplication.update -= UpdateSubmoduleOnce;
 
         UpdateSubmodule();
+
+        EditorPrefs.SetBool(EditorPrefKey, true);
     }
 
     private static void UpdateSubmodule()
